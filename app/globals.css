@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.separator::after {
+  display: block;
+  content: '';
+  height: 1px;
+  width: 110px;
+  background-color: black;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.btn-email:hover::after {
+  content: 'Pracujemy nad tym';
+  position: absolute;
+  background: #000;
+  border-radius: 6px;
+  padding: 5px 15px;
+  color: white;
+  top: 43vh;
+}
