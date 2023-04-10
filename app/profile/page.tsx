@@ -1,5 +1,5 @@
 import React from 'react';
-import { Profile } from '@/components';
+import { Profile, ProfileOverlay } from '@/components';
 
 export const metadata = {
   title: 'profile',
@@ -7,9 +7,11 @@ export const metadata = {
 
 const page = () => {
   return (
-    <section>
-      <Profile />
-    </section>
+    <main>
+      <ProfileOverlay>
+        <Profile />
+      </ProfileOverlay>
+    </main>
   );
 };
 

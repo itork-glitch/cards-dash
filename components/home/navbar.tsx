@@ -4,12 +4,14 @@ import { Cross as Hamburger } from 'hamburger-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import image from '@/public/next.svg';
+import { signOut, useSession } from 'next-auth/react';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
   return (
     <section>
-      <nav className='md:flex justify-between h-[6vh] items-center hidden'>
+      <nav className='md:flex justify-between h-[6vh] items-center hidden shadow-[0_2px_4px_0_rgba(0,0,0,.2);]'>
         <div className='pl-5 flex gap-5'>
           <Image src={image} alt='nav' height={70} width={70} />
           <ul className='flex list-none gap-5'>
@@ -30,7 +32,11 @@ const Navbar = () => {
               <Link href={'/profile'}>Profil</Link>
             </li>
             <li>
-              <Link href={'/auth'}>Zaloguj się</Link>
+              {session ? (
+                <button onClick={() => signOut()}>Wyloguj się</button>
+              ) : (
+                <Link href={'/auth'}>Zaloguj się</Link>
+              )}
             </li>
           </ul>
         </div>
