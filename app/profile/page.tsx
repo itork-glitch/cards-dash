@@ -2,7 +2,7 @@ import React from 'react';
 import { Profile, ProfileOverlay } from '@/components';
 
 export const metadata = {
-  title: 'profile',
+  title: 'Profile Cards | Profile',
 };
 
 const page = () => {

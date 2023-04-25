@@ -31,7 +31,7 @@ const Page = () => {
         <div className='mt-5 bg-slate-900/50 h-[15vh] rounded-xl w-[50%] flex flex-row flex-wrap justify-center'>
           <h1 className='text-center font-semibold text-xl flex items-center gap-1'>
             <AiFillCheckCircle />
-            Pomyślnie zalogowano
+            Hej {session?.user?.name}
           </h1>
           <p className='w-full text-slate-300 flex items-center justify-center'>
             Za {countdown} sekund zostaniesz przekierowany na swój profil
