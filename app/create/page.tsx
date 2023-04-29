@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import imgInsta from '@/public/insta.png';
 
 interface CanvasData {
   name: string;
@@ -63,17 +65,34 @@ const CreateCardPage = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-
+    const img2 = new Image();
+    img2.src =
+      'https://www.logo.wine/a/logo/Instagram/Instagram-Glyph-Color-Logo.wine.svg';
     const img = new Image();
     img.src = imageUrl;
     img.onload = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      ctx.font = '48px Arial';
-      ctx.fillStyle = 'black';
-      ctx.textAlign = 'center';
-      ctx.fillText(name, canvas.width / 2, canvas.height * 0.07);
-      ctx.fillText(email, canvas.width / 2, canvas.height * 0.14);
+      img2.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        const rectY = canvas.height - 100;
+        ctx.roundRect(20, rectY, 200, 75, 15);
+        ctx.fill();
+        ctx.font = '48px Arial';
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        ctx.fillText(name, canvas.width / 2, canvas.height * 0.07);
+        ctx.fillText(email, canvas.width / 2, canvas.height * 0.14);
+        ctx.drawImage(img2, 5, canvas.height - 90, 80, 55);
+        ctx.textAlign = 'left';
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width / 4, 0);
+        gradient.addColorStop(0, ' magenta');
+        gradient.addColorStop(0.5, 'blue');
+        gradient.addColorStop(1.0, 'red');
+        // Fill with gradient
+        ctx.fillStyle = gradient;
+        ctx.fillText(name, canvas.width / 2 - 180, canvas.height - 46);
+      };
     };
   };
 
