@@ -38,6 +38,5 @@ jspm_packages
 .next
 
 /.next
-.env
 next-env.d.ts
 /.vscode
